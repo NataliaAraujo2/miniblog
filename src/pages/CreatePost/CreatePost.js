@@ -3,6 +3,7 @@ import styles from "./CreatePost.module.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthValue } from "../../context/AuthContext";
+import { useInsertDocument } from "../../hooks/useInsertDocument";
 
 const CreatePost = () => {
   const [title, setTitle] = useState("");
@@ -11,15 +12,36 @@ const CreatePost = () => {
   const [tags, setTags] = useState("");
   const [formError, setFormError] = useState("");
 
-  const handleSubimt = (e) => {
+  const { user } = useAuthValue();
+
+  const navigate = useNavigate();
+
+  const { insertDocument, response } = useInsertDocument("posts");
+  const handleSubmit = (e) => {
     e.preventDefault();
+    setFormError("");
+
+    //validate image URL
+    //criar o array de tags
+    // checar todos
+
+    insertDocument({
+      title,
+      image,
+      body,
+      tags,
+      uid: user.uid,
+      createBy: user.displayName,
+    });
+    //redirect to home page
+    navigate("/");
   };
 
   return (
     <div className={styles.create_post}>
       <h2>CREAT POST</h2>
       <p>Escreva sobre o que quiser e compartilhe o seu conhecimento!</p>
-      <form>
+      <form onSubmit={handleSubmit}>
         <label>
           <span> Title: </span>
           <input
@@ -32,7 +54,7 @@ const CreatePost = () => {
           />
         </label>
         <label>
-          <span> Image: </span>
+          <span> Image URL: </span>
           <input
             type="text"
             name="image"
@@ -54,7 +76,7 @@ const CreatePost = () => {
           ></textarea>
         </label>
         <label>
-          <span> Conteúdo: </span>
+          <span> Tags: </span>
           <input
             type="text"
             name="tags"
@@ -64,14 +86,14 @@ const CreatePost = () => {
             value={tags}
           />
         </label>
-        <button className="btn">REGISTER</button>
-        {/* {!loading && <button className="btn">REGISTER</button>}
-        {loading && (
+
+        {!response.loading && <button className="btn">REGISTER</button>}
+        {response.loading && (
           <button className="btn" disable>
             Aguarde...
           </button>
         )}
-        {error && <p className="error">{error}</p>} */}
+        {response.error && <p className="error">{response.error}</p>}
       </form>
     </div>
   );
