@@ -8,6 +8,7 @@ import styles from "./Navbar.module.css";
 
 const Navbar = () => {
   const { user } = useAuthValue();
+  const { logout } = useAuthentication();
 
   return (
     <nav className={styles.navbar}>
@@ -44,24 +45,24 @@ const Navbar = () => {
           </>
         )}
         {user && (
-               <>
-               <li>
-                 <NavLink
-                   to="/posts/create"
-                   className={({ isActive }) => (isActive ? styles.active : "")}
-                 >
-                   NEW POST
-                 </NavLink>
-               </li>
-               <li>
-                 <NavLink
-                   to="/dashboard"
-                   className={({ isActive }) => (isActive ? styles.active : "")}
-                 >
-                   DASHBOARD
-                 </NavLink>
-               </li>
-             </>
+          <>
+            <li>
+              <NavLink
+                to="/posts/create"
+                className={({ isActive }) => (isActive ? styles.active : "")}
+              >
+                NEW POST
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/dashboard"
+                className={({ isActive }) => (isActive ? styles.active : "")}
+              >
+                DASHBOARD
+              </NavLink>
+            </li>
+          </>
         )}
         <li>
           <NavLink
@@ -71,6 +72,11 @@ const Navbar = () => {
             ABOUT
           </NavLink>
         </li>
+        {user && (
+          <li>
+            <button onClick={logout}>LOGOUT</button>
+          </li>
+        )}
       </ul>
     </nav>
   );
