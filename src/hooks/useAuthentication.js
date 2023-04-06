@@ -79,6 +79,8 @@ export const useAuthentication = () => {
 
     try {
       await signInWithEmailAndPassword(auth,data.email,data.password)
+      setLoading(false)
+      
     } catch (error) {
       let systemErrorMessage;
       if (error.message.includes("user-not-found")) {
@@ -89,6 +91,7 @@ export const useAuthentication = () => {
         systemErrorMessage = "Ocorreu um erro, por favor tente mais tarde.";
       }
       setError(systemErrorMessage)
+      setLoading(false)
     }
   };
 
@@ -102,5 +105,6 @@ export const useAuthentication = () => {
     error,
     loading,
     logout,
+    login,
   };
 };
