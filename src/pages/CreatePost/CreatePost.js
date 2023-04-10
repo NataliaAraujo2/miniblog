@@ -22,14 +22,44 @@ const CreatePost = () => {
     setFormError("");
 
     //validate image URL
+
+    try {
+      new URL(image);
+    } catch (error) {
+      console.log(error.message);
+
+      let postImageUrlError;
+      if (error.message.includes("URL")) {
+        postImageUrlError = "teste";
+      }
+      setFormError(postImageUrlError);
+
+      return;
+    }
+
     //criar o array de tags
-    // checar todos
+    const tagArray = tags.split(",").map((tag) => tag.trim().toLowerCase());
+
+    // checar todosos campos
+    if (!title) {
+      setFormError("Preencha o Título!");
+      document.getElementById("title").focus();
+      return;
+    } else if (!tags) {
+      setFormError("Preencha as Tags!");
+      document.getElementById("tags").focus();
+      return;
+    } else if (!body) {
+      setFormError("Preencha o Conteúdo!");
+      document.getElementById("body").focus();
+      return;
+    }
 
     insertDocument({
       title,
       image,
       body,
-      tags,
+      tagArray,
       uid: user.uid,
       createBy: user.displayName,
     });
@@ -46,8 +76,8 @@ const CreatePost = () => {
           <span> Title: </span>
           <input
             type="text"
+            id="title"
             name="title"
-            required
             placeholder="Pense num bom título"
             onChange={(e) => setTitle(e.target.value)}
             value={title}
@@ -57,8 +87,8 @@ const CreatePost = () => {
           <span> Image URL: </span>
           <input
             type="text"
+            id="image"
             name="image"
-            required
             placeholder="Insira uma imagem que represente o seu texto"
             onChange={(e) => setImage(e.target.value)}
             value={image}
@@ -68,8 +98,8 @@ const CreatePost = () => {
           <span> Conteúdo: </span>
           <textarea
             type="text"
+            id="body"
             name="body"
-            required
             placeholder="Insira o conteúdo do post"
             onChange={(e) => setBody(e.target.value)}
             value={body}
@@ -79,8 +109,8 @@ const CreatePost = () => {
           <span> Tags: </span>
           <input
             type="text"
+            id="tags"
             name="tags"
-            required
             placeholder="Insira o conteúdo do post"
             onChange={(e) => setTags(e.target.value)}
             value={tags}
@@ -94,6 +124,7 @@ const CreatePost = () => {
           </button>
         )}
         {response.error && <p className="error">{response.error}</p>}
+        {formError && <p className="error">{formError}</p>}
       </form>
     </div>
   );
