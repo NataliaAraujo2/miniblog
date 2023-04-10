@@ -30,7 +30,7 @@ const CreatePost = () => {
 
       let postImageUrlError;
       if (error.message.includes("URL")) {
-        postImageUrlError = "teste";
+        postImageUrlError = "A imagem precisa ser uma URL válida!";
       }
       setFormError(postImageUrlError);
 
