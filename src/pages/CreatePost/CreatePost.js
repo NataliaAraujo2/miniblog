@@ -11,7 +11,8 @@ const CreatePost = () => {
   const [body, setBody] = useState("");
   const [tags, setTags] = useState("");
   const [formError, setFormError] = useState("");
-
+  //Sim Não
+  const [role, setRole]=useState("");
   const { user } = useAuthValue();
 
   const navigate = useNavigate();
@@ -21,24 +22,8 @@ const CreatePost = () => {
     e.preventDefault();
     setFormError("");
 
-    //validate image URL
-
-    try {
-      new URL(image);
-    } catch (error) {
-      console.log(error.message);
-
-      let postImageUrlError;
-      if (error.message.includes("URL")) {
-        postImageUrlError = "A imagem precisa ser uma URL válida!";
-      }
-      setFormError(postImageUrlError);
-
-      return;
-    }
-
     //criar o array de tags
-    const tagArray = tags.split(",").map((tag) => tag.trim().toLowerCase());
+    const tagsArray = tags.split(",").map((tag) => tag.trim().toLowerCase());
 
     // checar todosos campos
     if (!title) {
@@ -53,13 +38,32 @@ const CreatePost = () => {
       setFormError("Preencha o Conteúdo!");
       document.getElementById("body").focus();
       return;
+    } else if (!image) {
+      setFormError("Preencha a Imagem!");
+      document.getElementById("image").focus();
+      return;
+    }
+
+    //validate image URL
+    try {
+      new URL(image);
+    } catch (error) {
+      console.log(error.message);
+
+      let postImageUrlError;
+      if (error.message.includes("URL")) {
+        postImageUrlError = "A imagem precisa ser uma URL válida!";
+      }
+      setFormError(postImageUrlError);
+
+      return;
     }
 
     insertDocument({
       title,
       image,
       body,
-      tagArray,
+      tags: tagsArray,
       uid: user.uid,
       createBy: user.displayName,
     });
@@ -84,17 +88,6 @@ const CreatePost = () => {
           />
         </label>
         <label>
-          <span> Image URL: </span>
-          <input
-            type="text"
-            id="image"
-            name="image"
-            placeholder="Insira uma imagem que represente o seu texto"
-            onChange={(e) => setImage(e.target.value)}
-            value={image}
-          />
-        </label>
-        <label>
           <span> Conteúdo: </span>
           <textarea
             type="text"
@@ -114,6 +107,17 @@ const CreatePost = () => {
             placeholder="Insira o conteúdo do post"
             onChange={(e) => setTags(e.target.value)}
             value={tags}
+          />
+        </label>
+        <label>
+          <span>Include an image: </span>
+           <input
+            type="text"
+            id="image"
+            name="image"
+            placeholder="Insira uma imagem que represente o seu texto"
+            onChange={(e) => setImage(e.target.value)}
+            value={image}
           />
         </label>
 
