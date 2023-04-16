@@ -6,15 +6,18 @@ const PostDetail = ({ post }) => {
     <div>
       <img src={post.image} alt={post.title} />
       <h2>{post.title}</h2>
-      <p>{post.createdAt}</p>
+      <p>{post.createBy}</p>
       <div>
         {post.tagsArray.map((tag) => (
           <p key={tag}>
             <span>#</span>
             {tag}
+            {/* {console.log(post.tagArray)} */}
           </p>
         ))}
+        
       </div>
+     
       <Link to={`/posts/${post.id}`} className="btn btn-outline">
         LER
       </Link>

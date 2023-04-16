@@ -9,7 +9,7 @@ const CreatePost = () => {
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
   const [body, setBody] = useState("");
-  const [tags, setTags] = useState("");
+  const [tags, setTags] = useState([]);
   const [formError, setFormError] = useState("");
   //Sim Não
   const [role, setRole]=useState("");
@@ -63,7 +63,7 @@ const CreatePost = () => {
       title,
       image,
       body,
-      tags: tagsArray,
+      tagsArray,
       uid: user.uid,
       createBy: user.displayName,
     });
