@@ -16,14 +16,13 @@ const Search = () => {
   const { documents: posts } = useFetchDocuments("posts", search);
 
   return (
-    <div>
-      <h2>Search</h2>
+    <div className={styles.search_container}>
       <div>
-        {posts && posts.lenght === 0 && (
-            <>
+        {posts && posts.length === 0 && (
+          <div className={styles.noposts}>
             <p>Não forma encontrados posts a partir da sua busca...</p>
-            <Link to="/" className="btn btn-dark"></Link>
-            </>
+            <Link to="/" className="btn btn-dark">Voltar</Link>
+          </div>
         )}
         {posts && posts.map((post) => <PostDetail key={post.id} post={post} />)}
       </div>
