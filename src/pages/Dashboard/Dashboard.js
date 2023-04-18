@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { useAuthValue } from "../../context/AuthContext";
 //hooks
 import { useFetchDocuments } from "../../hooks/useFetchDocuments";
+import PostDetail from "../../components/PostDetails/PostDetail";
 
 const Dashboard = () => {
   //Users
@@ -13,7 +14,7 @@ const Dashboard = () => {
   const uid = user.uid;
 
   //Posts
-  const posts = [];
+  const { documents: posts, loading } = useFetchDocuments("posts", null, uid);
 
   return (
     <div>
@@ -29,8 +30,10 @@ const Dashboard = () => {
       ) : (
         <div>
           <p>Tem posts!</p>
+      
         </div>
       )}
+           {posts && posts.map((post) => <PostDetail key={post.id} post={post} />)}
     </div>
   );
 };
