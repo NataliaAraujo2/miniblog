@@ -18,7 +18,7 @@
 .post_header, .post_row{
     display: flex;
     justify-content: space-between;
-    width: 80%;
+    
     padding: 10px;
 }
 .post_header {
