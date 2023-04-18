@@ -35,15 +35,18 @@ const Home = () => {
       </form>
       <div>
         {loading && <p>Carregando...</p>}
-        {posts && posts.map((post) => <PostDetail key={post.id} post={post} />)}
         {posts && posts.length === 0 && (
           <div className={styles.noposts}>
             <p>Não foram encontrados posts!</p>
             <Link to="/posts/create" className="btn">
               Criar primeiro post!
             </Link>
-          </div>
+            </div>
         )}
+        
+        {posts && posts.map((post) => <PostDetail key={post.id} post={post} />)}
+       
+      
       </div>
     </div>
   );
