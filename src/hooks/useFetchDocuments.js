@@ -22,9 +22,10 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
 
       setLoading(true);
 
-      const collectionRef = await collection(db, docCollection);
+     
 
       try {
+        const collectionRef = await collection(db, docCollection);
         let q;
 
         if (search) {
