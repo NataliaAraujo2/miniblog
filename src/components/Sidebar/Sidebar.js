@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Content } from "./styles";
-import { FaHome, FaLock,  FaPen,  FaTimes } from "react-icons/fa";
+import { FaDatabase, FaHome, FaLock,  FaPen,  FaPlus,  FaTimes } from "react-icons/fa";
 
 import { NavLink } from "react-router-dom";
 import { useAuthentication } from "../../hooks/useAuthentication";
@@ -17,26 +17,9 @@ const Sidebar = ({ active }) => {
     <Container sidebar={active}>
       <FaTimes onClick={closeSidebar} />
       <Content>
-        <SidebarItem way="/" Icon={FaHome} Text="Início" />      
-      
-        {user && (
-          <>
-            <li>
-              <NavLink to="/posts/create">NEW POST</NavLink>
-            </li>
-            <li>
-              <NavLink to="/dashboard">DASHBOARD</NavLink>
-            </li>
-          </>
-        )}
-        <li>
-          <NavLink to="/about">ABOUT</NavLink>
-        </li>
-        {user && (
-          <li>
-            <button onClick={logout}>LOGOUT</button>
-          </li>
-        )}
+        <SidebarItem x={closeSidebar} way="/" Icon={FaHome} Text="Início" />      
+        <SidebarItem x={closeSidebar} way="/posts/create" Icon={FaPlus} Text="Novo Post" />       
+        <SidebarItem x={closeSidebar} way="/dashboard" Icon={FaDatabase} Text="Dashboard" /> 
       </Content>
     </Container>
   );

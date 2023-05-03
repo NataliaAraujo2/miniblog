@@ -8,6 +8,7 @@ import { useAuthValue } from "../../context/AuthContext";
 import { useFetchDocuments } from "../../hooks/useFetchDocuments";
 import { useDeleteDocument } from "../../hooks/useDeleteDocument";
 
+
 const Dashboard = () => {
   //Users
   const { user } = useAuthValue();
@@ -43,22 +44,27 @@ const Dashboard = () => {
             posts.map((post) => (
               <div key={post.id} className={styles.post_row}>
                 <p>{post.title}</p>
-                <div>
-                  <Link to={`/posts/${post.id}`} className="btn btn-outline">
-                    VER
-                  </Link>
-                  <Link
-                    to={`/posts/edit/${post.id}`}
-                    className="btn btn-outline"
-                  >
-                    EDITAR
-                  </Link>
-                  <button
-                    onClick={() => deleteDocument(post.id)}
-                    className="btn btn-outline btn-danger"
-                  >
-                    EXCLUIR
-                  </button>
+                <div className={styles.post_row_bottoms}>
+                  <div className={styles.button}>
+                   
+                    <Link to={`/posts/${post.id}`} >
+                      VER
+                    </Link>
+                  </div>
+                  <div className={styles.button}>
+                    <Link
+                      to={`/posts/edit/${post.id}`}
+                    >
+                      EDITAR
+                    </Link>
+                  </div>
+                  <div className={styles.button}>
+                    <button
+                      onClick={() => deleteDocument(post.id)}
+                    >
+                      EXCLUIR
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}

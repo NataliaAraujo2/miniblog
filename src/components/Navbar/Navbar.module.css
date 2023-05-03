@@ -2,23 +2,33 @@
   max-height: 100vw;
   min-width: 100vw;
   display: flex;
-  box-shadow: 0 0 20px 3px;
+  box-shadow: 0 0 20px 2px;
   align-items: center;
   justify-content: space-between;
 }
 
+
 .faBars {
   color: palevioletred;
-  width: 50px;
-  height: 50px;
-  margin-left: 20px;
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+  padding: 20px;
+}
+
+
+.faBars_inactive {
+  color: gray;
+  width: 100px;
+  height: 100px;
   cursor: pointer;
 }
 
 .brand {
-  font-size: 2em;
+  font-size: 4em;
   align-items: center;
-  margin-right: 40px;
+  
+ 
 }
 
 .brand span {
@@ -30,16 +40,14 @@
 .link_list {
   display: flex;
   list-style: none;
-
+  flex-direction: column;
+ 
 }
 
 .link_list li {
   margin-right: 1em;
 }
 
-.a {
-  padding: 0.4em 0.6em;
-}
 
 .active {
   background-color: #000;
@@ -48,19 +56,47 @@
 
 @media screen and (max-width: 768px){
   .faBars {
+    color: palevioletred;
     width: 25px;
     height: 25px;
-    margin-left: 10px;
+    cursor: pointer;
+    padding: 20px;
   }
-
+  
+  
+  .faBars_inactive {
+    color: gray;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+  }
+  
   .brand {
     font-size: 1.5em;
     align-items: center;
-    margin-right: 40px;
   }
-
-
-	.link_list li {
-    font-size: 10px;
+  
+  .brand span {
+    font-weight: 900;
+    text-transform: uppercase;
+    color: palevioletred;
+  }
+  
+  .link_list {
+    display: flex;
+    list-style: none;
+    flex-direction: column;
+   
+  }
+  
+  .link_list li {
+    font-size: .35em;
+    margin-right: 1em;
+  }
+  
+  
+  .active {
+    background-color: #000;
+    color: #fff;
   }
 }

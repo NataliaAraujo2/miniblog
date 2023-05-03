@@ -3,9 +3,27 @@
 }
 
 .create_post h2 {
-    font-size: 2.2em;
+    font-size: 3vw;
 }
 
 .create_post p {
     color: #AAA;
+    font-size: 2vw;
+    margin-bottom: 2em;
+}
+
+@media screen and (max-width: 768px){
+    .create_post {
+        text-align: center;
+    }
+    
+    .create_post h2 {
+        font-size: 5vw;
+    }
+    
+    .create_post p {
+        color: #AAA;
+        font-size: 2vw;
+        margin-bottom: 3vw;
+    }
 }

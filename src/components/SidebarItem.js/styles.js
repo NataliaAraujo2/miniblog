@@ -13,7 +13,7 @@ export const Container = styled.div`
 
 
   > svg {
-    margin: 0 10px;
+    margin: 0 5px 0 0;
   }
   &:hover {
     background-color: black;

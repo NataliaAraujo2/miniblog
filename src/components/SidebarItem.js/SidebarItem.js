@@ -2,11 +2,11 @@ import React from "react";
 import { Container } from "./styles";
 import { NavLink } from "react-router-dom";
 
-const SidebarItem = ({ way, Icon, Text }) => {
+const SidebarItem = ({ x, way, Icon, Text }) => {
   return (
     
       <NavLink to={way}>
-        <Container>
+        <Container onClick={x}>
         <Icon />
         {Text}
         </Container>

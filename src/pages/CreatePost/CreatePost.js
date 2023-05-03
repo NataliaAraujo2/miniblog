@@ -59,6 +59,8 @@ const CreatePost = () => {
       return;
     }
 
+   
+
     insertDocument({
       title,
       image,
@@ -70,6 +72,8 @@ const CreatePost = () => {
     //redirect to home page
     navigate("/");
   };
+
+
 
   return (
     <div className={styles.create_post}>
@@ -93,6 +97,7 @@ const CreatePost = () => {
             type="text"
             id="body"
             name="body"
+            rows={10}
             placeholder="Insira o conteúdo do post"
             onChange={(e) => setBody(e.target.value)}
             value={body}
