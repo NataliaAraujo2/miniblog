@@ -1,84 +1,42 @@
-import { NavLink } from "react-router-dom";
-
-import { useAuthentication } from "../../hooks/useAuthentication";
+// import { useAuthentication } from "../../hooks/useAuthentication";
 import { useAuthValue } from "../../context/AuthContext";
 
 //CSS
 import styles from "./Navbar.module.css";
+import { useState } from "react";
+import { FaBars, FaLock, FaPen } from "react-icons/fa";
+import Sidebar from "../Sidebar/Sidebar";
+import SidebarItem from "../SidebarItem/SidebarItem";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const { user } = useAuthValue();
-  const { logout } = useAuthentication();
+  // const { logout } = useAuthentication();
+  const [sidebar, setSidebar] = useState(false);
+  const showSidebar = () => setSidebar(!sidebar);
 
   return (
-    <nav className={styles.navbar}>
-      <NavLink to="/" className={styles.brand}>
-        Mini<span>Blog</span>
-      </NavLink>
-      <ul className={styles.link_list}>
-        <li>
-          <NavLink
-            to="/"
-            className={({ isActive }) => (isActive ? styles.active : "")}
-          >
-            HOME
-          </NavLink>
-        </li>
+    <div className={styles.navbar}>
+      <FaBars className={styles.faBars} onClick={showSidebar}></FaBars>
+      {sidebar && <Sidebar active={setSidebar} />}
+      <>
+        <NavLink to="/" className={styles.brand}>
+          Mini<span>Blog</span>
+        </NavLink>
+      </>
+      <div className={styles.link_list}>
         {!user && (
-          <>
+          <div>
             <li>
-              <NavLink
-                to="/login"
-                className={({ isActive }) => (isActive ? styles.active : "")}
-              >
-                LOGIN
-              </NavLink>
+              <SidebarItem way="/login" Icon={FaLock} Text="Login" />
             </li>
             <li>
-              <NavLink
-                to="/register"
-                className={({ isActive }) => (isActive ? styles.active : "")}
-              >
-                REGISTER
-              </NavLink>
+              <SidebarItem way="/register" Icon={FaPen} Text="Cadastre-se" />
             </li>
-          </>
+          </div>
         )}
-        {user && (
-          <>
-            <li>
-              <NavLink
-                to="/posts/create"
-                className={({ isActive }) => (isActive ? styles.active : "")}
-              >
-                NEW POST
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/dashboard"
-                className={({ isActive }) => (isActive ? styles.active : "")}
-              >
-                DASHBOARD
-              </NavLink>
-            </li>
-          </>
-        )}
-        <li>
-          <NavLink
-            to="/about"
-            className={({ isActive }) => (isActive ? styles.active : "")}
-          >
-            ABOUT
-          </NavLink>
-        </li>
-        {user && (
-          <li>
-            <button onClick={logout}>LOGOUT</button>
-          </li>
-        )}
-      </ul>
-    </nav>
+      </div>
+    </div>
   );
 };
 
