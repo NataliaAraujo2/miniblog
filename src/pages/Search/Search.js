@@ -35,7 +35,7 @@ const Search = () => {
           placeholder="Ou busque por tags..."
           onChange={(e) => setQuery(e.target.value)}
         />
-        <button className="button">Pesquisar</button>
+        <button className={styles.button}>Pesquisar</button>
       </form>
       <div>
         {posts && posts.length === 0 && (
