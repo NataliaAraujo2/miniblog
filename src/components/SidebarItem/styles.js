@@ -6,7 +6,7 @@ export const Container = styled.div`
   background-color: palevioletred;
   width: fit-content;
   height: fit-content;
-  font-size: 5vw;
+  font-size: 2vw;
   color: white;
   padding: 2px 10px;
   cursor: pointer;
@@ -19,6 +19,10 @@ export const Container = styled.div`
   }
   &:hover {
     background-color: black;
+  }
+
+  @media screen and (max-width: 768px){
+    font-size: 4vw;
   }
 `;
 
