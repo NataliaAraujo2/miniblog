@@ -46,7 +46,6 @@ const Dashboard = () => {
                 <p>{post.title}</p>
                 <div className={styles.post_row_bottoms}>
                   <div className={styles.button}>
-                   
                     <Link to={`/posts/${post.id}`} >
                       VER
                     </Link>
