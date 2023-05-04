@@ -7,6 +7,8 @@ import { useAuthValue } from "../../context/AuthContext";
 //hooks
 import { useFetchDocuments } from "../../hooks/useFetchDocuments";
 import { useDeleteDocument } from "../../hooks/useDeleteDocument";
+import SidebarItem from "../../components/SidebarItem/SidebarItem";
+import { FaPen } from "react-icons/fa";
 
 
 const Dashboard = () => {
@@ -30,9 +32,8 @@ const Dashboard = () => {
       {posts && posts.length === 0 ? (
         <div className={styles.noposts}>
           <p>Não foram encontrados posts!</p>
-          <Link to="/posts/create" className="btn">
-            CRIAR PRIMEIRO POST
-          </Link>
+          <SidebarItem way="/posts/create" Icon={FaPen} Text=" CRIAR PRIMEIRO POST"></SidebarItem>
+          
         </div>
       ) : (
         <>

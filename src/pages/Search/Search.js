@@ -7,36 +7,26 @@ import { useQuery } from "../../hooks/useQuery";
 //component
 import PostDetail from "../../components/PostDetails/PostDetail";
 //route
-import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { Link } from "react-router-dom";
+
+import SidebarItem from "../../components/SidebarItem/SidebarItem";
+import { FaArrowAltCircleLeft } from "react-icons/fa";
 
 const Search = () => {
   const query = useQuery();
   const search = query.get("q");
 
   const { documents: posts } = useFetchDocuments("posts", search);
-  const [queryi, setQuery] = useState("");
  
-
-  const navigate = useNavigate();
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (query) {
-      return navigate(`/search?q=${queryi}`);
-    }
-  };
+  
   return (
     <div className={styles.search_container}>
+      <div className={styles.sidebaritem}>
+      <SidebarItem way="/" Icon={FaArrowAltCircleLeft} Text="Voltar"></SidebarItem>
+      </div>
+      
       <h1>RESULTADOS</h1>
-      <form onSubmit={handleSubmit} className={styles.search_form}>
-        <input
-          type="text"
-          placeholder="Ou busque por tags..."
-          onChange={(e) => setQuery(e.target.value)}
-        />
-        <button className={styles.button}>Pesquisar</button>
-      </form>
+
       <div>
         {posts && posts.length === 0 && (
           <div className={styles.noposts}>

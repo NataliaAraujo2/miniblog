@@ -1,5 +1,7 @@
+import { FaEye } from "react-icons/fa";
+import SidebarItem from "../SidebarItem/SidebarItem";
 import styles from "./PostDetails.module.css";
-import { Link } from "react-router-dom";
+
 
 const PostDetail = ({ post }) => {
   // conversão do creatAt para formato de data e de hora
@@ -24,10 +26,10 @@ const PostDetail = ({ post }) => {
         ))}
         
       </div>
-     
-      <Link to={`/posts/${post.id}`} className="button">
-        LER
-      </Link>
+      <div className={styles.sidebaritem}>
+      <SidebarItem way={`/posts/${post.id}`} Icon={FaEye} Text="Ler" />
+      </div>
+   
     </div>
   );
 };

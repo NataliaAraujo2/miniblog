@@ -4,9 +4,11 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   background-color: palevioletred;
-  font-size: 2em;
+  width: fit-content;
+  height: fit-content;
+  font-size: 5vw;
   color: white;
-  padding: 0 10px;
+  padding: 2px 10px;
   cursor: pointer;
   border-radius: 10px;
   margin: 0 5px 0; 

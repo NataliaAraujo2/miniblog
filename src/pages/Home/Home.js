@@ -8,6 +8,8 @@ import { useFetchDocuments } from "../../hooks/useFetchDocuments";
 
 //components
 import PostDetail from "../../components/PostDetails/PostDetail";
+import SidebarItem from "../../components/SidebarItem/SidebarItem";
+import { FaSearch } from "react-icons/fa";
 
 const Home = () => {
   const [query, setQuery] = useState("");
@@ -31,7 +33,9 @@ const Home = () => {
           placeholder="Ou busque por tags..."
           onChange={(e) => setQuery(e.target.value)}
         />
-        <button className={styles.button}>Pesquisar</button>
+         
+        <SidebarItem x={handleSubmit} Icon={FaSearch} Text="Pesquisar"></SidebarItem>
+        
       </form>
       <div>
       {loading && <p>Carregando...</p>}

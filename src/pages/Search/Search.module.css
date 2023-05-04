@@ -5,6 +5,11 @@
     justify-content: center;
 }
 
+.sidebaritem{
+margin-top: 5vw;
+position:static;
+}
+
 .search_container h1 {
     margin-bottom: 1em;
 }

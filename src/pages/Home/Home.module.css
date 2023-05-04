@@ -13,6 +13,11 @@
     margin-bottom: 2em;
 }
 
+.button {
+    border: none;
+    background-color: transparent;
+}
+
 .search_form input {
     margin-right: 10px;
     width: 50%;

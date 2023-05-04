@@ -4,6 +4,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthValue } from "../../context/AuthContext";
 import { useInsertDocument } from "../../hooks/useInsertDocument";
+import SidebarItem from "../../components/SidebarItem/SidebarItem";
+import { FaSave } from "react-icons/fa";
 
 const CreatePost = () => {
   const [title, setTitle] = useState("");
@@ -11,8 +13,7 @@ const CreatePost = () => {
   const [body, setBody] = useState("");
   const [tags, setTags] = useState([]);
   const [formError, setFormError] = useState("");
-  //Sim Não
-  const [role, setRole]=useState("");
+
   const { user } = useAuthValue();
 
   const navigate = useNavigate();
@@ -126,7 +127,7 @@ const CreatePost = () => {
           />
         </label>
 
-        {!response.loading && <button className="btn">REGISTER</button>}
+        {!response.loading &&  <SidebarItem x={handleSubmit} Icon={FaSave} Text="Registrar"></SidebarItem>}
         {response.loading && (
           <button className="btn" disable>
             Aguarde...
