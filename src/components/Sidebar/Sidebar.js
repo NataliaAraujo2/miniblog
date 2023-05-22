@@ -1,15 +1,10 @@
 import React from "react";
 import { Container, Content } from "./styles";
-import { FaDatabase, FaHome, FaLock,  FaPen,  FaPlus,  FaTimes } from "react-icons/fa";
-
-import { NavLink } from "react-router-dom";
-import { useAuthentication } from "../../hooks/useAuthentication";
-import { useAuthValue } from "../../context/AuthContext";
+import { FaDatabase, FaHome,  FaPlus,  FaTimes } from "react-icons/fa";
 import SidebarItem from "../SidebarItem/SidebarItem";
 
 const Sidebar = ({ active }) => {
-  const { user } = useAuthValue();
-  const { logout } = useAuthentication();
+
   const closeSidebar = () => {
     active(false);
   };

@@ -1,0 +1,41 @@
+.screen {
+width: 100%;
+height: 100vh;
+position: absolute;
+top: 0;
+left: 0;
+z-index: 10;
+background-color: rgba(0,0,0,0.8);
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+
+
+.avatar {
+  width:80%;
+  height: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid black;
+  background-color: aliceblue;
+  text-align: center;
+  padding: 1em;
+  overflow-y: scroll
+}
+
+.avatar img {
+  width: 4em;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: space-between;
+  padding: .1em;
+}
+
+.avatar img:hover {
+  background-color: palevioletred;
+}

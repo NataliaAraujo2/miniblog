@@ -1,7 +1,58 @@
 .register {
-    text-align: center;
+  text-align: center;
 }
 
 .register p {
-    color: #aaa;
+  color: #aaa;
+}
+
+.register form {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.avatar {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #fff;
+  background-color: #fff;
+  border-radius: 50%;
+  width: 4em;
+  height: 4em;
+  margin-left: 45%;
+  margin-bottom: 6em;
+  margin-top: 6em;
+  cursor: pointer;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.avatar svg{
+  font-size: 3em;
+}
+
+.showtext {
+  display: none;
+}
+
+.avatar:hover {
+  color: transparent;
+}
+
+.avatar:hover .showtext {
+  display: block;
+  color: #000;
+  font-weight: 900;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+.avatarChoice {
+  align-items: center;
+}
+
+.avatarChoice {
+  color: transparent;
 }

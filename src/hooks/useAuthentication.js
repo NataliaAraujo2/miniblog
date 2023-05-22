@@ -40,6 +40,7 @@ export const useAuthentication = () => {
 
       await updateProfile(user, {
         displayName: data.displayName,
+        displayAvatar:data.displayAvatar
       });
 
       setLoading(false);
