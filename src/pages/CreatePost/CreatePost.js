@@ -69,6 +69,7 @@ const CreatePost = () => {
       tagsArray,
       uid: user.uid,
       createBy: user.displayName,
+     
     });
     //redirect to home page
     navigate("/");

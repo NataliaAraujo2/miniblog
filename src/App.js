@@ -22,6 +22,7 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import Post from "./pages/Post/Post";
 import Search from "./pages/Search/Search";
 import EditPost from './pages/EditPost/EditPost';
+import Avatar from "./components/Avatar/Avatar";
 
 
 function App() {
@@ -51,7 +52,7 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/search" element={<Search />} />
               <Route path="/posts/:id" element={<Post />} />
-    
+              <Route path="/avatar" element={<Avatar />} />
               <Route
                 path="/login"
                 element={!user ? <Login /> : <Navigate to="/" />}

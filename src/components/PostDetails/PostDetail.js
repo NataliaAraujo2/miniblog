@@ -15,6 +15,7 @@ const PostDetail = ({ post }) => {
       <img src={post.image} alt={post.title} />
       <h2>{post.title}</h2>
       <p className={styles.createby}>{post.createBy}</p>
+      <p>{post.createByAvatar}</p>
       <p className={styles.createby}>Criado em: {formattedDate} {formattedTime}</p>
       <div className={styles.tags}>
         {post.tagsArray.map((tag) => (

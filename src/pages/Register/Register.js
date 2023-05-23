@@ -3,18 +3,14 @@ import { useAuthentication } from "../../hooks/useAuthentication";
 
 import styles from "./Register.module.css";
 import { useState, useEffect } from "react";
-import { FaUserSecret } from "react-icons/fa";
-
 
 const Register = () => {
   const [displayName, setDisplayName] = useState("");
+  const [photoURL, setPhotoURL] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
-  const [isModalOpen, setisModalOpen] = useState(false);
-
-
 
   const { createUser, error: authError, loading } = useAuthentication();
 
@@ -25,6 +21,7 @@ const Register = () => {
 
     const user = {
       displayName,
+      photoURL,
       email,
       password,
     };
@@ -44,24 +41,22 @@ const Register = () => {
     }
   }, [authError]);
 
- 
-
   return (
     <div className={styles.register}>
       <h1>Cadastre-se para postar</h1>
       <p>Crie seu usuário e compartilhe suas histórias!</p>
       <form onSubmit={handleSubmit}>
         <div className={styles.avatar}>
-          <label>
-            <FaUserSecret />
-            <div
-              className={styles.showtext}
-              onClick={() => setisModalOpen(true)}
-            >
-              Escolha seu avatar!
-            </div>
-            {isModalOpen && <Avatar onClose={() => setisModalOpen(false)} />}
-          </label>
+          <Avatar onChange={(e) => setPhotoURL(e.target.value)} />
+          <input
+          
+          type="text"
+          name="photoURL"
+          required
+          placeholder={photoURL}
+          value={photoURL}
+          onChange={(e) => setPhotoURL(e.target.value)}
+        />          
         </div>
         <label>
           <span>Nome:</span>
@@ -113,6 +108,7 @@ const Register = () => {
             Aguarde...
           </button>
         )}
+
         {error && <p className="error">{error}</p>}
       </form>
     </div>

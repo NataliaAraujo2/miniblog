@@ -4,7 +4,7 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   background-color: palevioletred;
-  width: fit-content;
+  width: max-content;
   height: fit-content;
   font-size: 2vw;
   color: white;

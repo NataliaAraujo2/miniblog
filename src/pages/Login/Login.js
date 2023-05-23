@@ -31,7 +31,7 @@ const Login = () => {
   }, [authError]);
 
   return (
-    <div>
+    <div className={styles.login}>
       <h1>Entre para postar</h1>
       <p>Compartilhe suas histórias!</p>
       <form onSubmit={handleSubmit}>
