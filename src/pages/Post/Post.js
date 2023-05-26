@@ -15,7 +15,7 @@ const Post = () => {
       {post && (
         <>
           <h1>{post.title}</h1>
-          <p>Criado por {post.createBy}</p>
+          <p>Criado por {post.createBy}</p> 
           <img src={post.image} alt={post.title} />
           <p>{post.body}</p>
           <h3>Assuntos:</h3>

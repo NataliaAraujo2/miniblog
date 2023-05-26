@@ -7,7 +7,6 @@
   justify-content: space-between;
 }
 
-
 .faBars {
   color: palevioletred;
   width: 100px;
@@ -15,7 +14,6 @@
   cursor: pointer;
   padding: 20px;
 }
-
 
 .faBars_inactive {
   color: gray;
@@ -27,8 +25,6 @@
 .brand {
   font-size: 4em;
   align-items: center;
-  
- 
 }
 
 .brand span {
@@ -42,11 +38,14 @@
   list-style: none;
   flex-direction: column;
   align-items: center;
- 
 }
 
 .link_list li {
   margin-right: 1em;
+}
+
+.photo {
+  height: 6px;
 }
 
 
@@ -56,7 +55,7 @@
   color: #fff;
 }
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 768px) {
   .faBars {
     color: palevioletred;
     width: 25px;
@@ -64,39 +63,36 @@
     cursor: pointer;
     padding: 20px;
   }
-  
-  
+
   .faBars_inactive {
     color: gray;
     width: 25px;
     height: 25px;
     cursor: pointer;
   }
-  
+
   .brand {
     font-size: 1.5em;
     align-items: center;
   }
-  
+
   .brand span {
     font-weight: 900;
     text-transform: uppercase;
     color: palevioletred;
   }
-  
+
   .link_list {
     display: flex;
     list-style: none;
     flex-direction: column;
-   
   }
-  
+
   .link_list li {
-    font-size: .35em;
+    font-size: 0.35em;
     margin-right: 1em;
   }
-  
-  
+
   .active {
     background-color: #000;
     color: #fff;

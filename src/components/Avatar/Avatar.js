@@ -3,12 +3,15 @@ import { FaUndoAlt, FaUserSecret } from "react-icons/fa";
 import { useState } from "react";
 import SidebarItem from "../SidebarItem/SidebarItem";
 
-const Avatar = () => {
+
+
+const Avatar = (props) => {
   const [chooseAvatar, setChooseAvatar] = useState(false);
   const [chosenAvatar, setChosenAvatar] = useState(false);
-  const [src, setSrc] = useState("");
-  const [photoURL, setPhotoURL] = useState("")
+  const [photoURL, setPhotoURL] = useState("");
+  
  
+
 
   const avatars = [];
   const size = 100;
@@ -30,16 +33,19 @@ const Avatar = () => {
     console.log(src);
     setChosenAvatar(true);
     setChooseAvatar(false);
-    setSrc(src);
-    setPhotoURL(src)
+    setPhotoURL(src);
+
+    props.handlePhotoURL(src)
   };
 
   const undo = () => {
     setChooseAvatar(false);
     setChosenAvatar(false);
   };
+
   return (
     <div className={styles.avatar}>
+ 
       {!chooseAvatar && !chosenAvatar && (
         <label>
           <FaUserSecret />
@@ -75,21 +81,11 @@ const Avatar = () => {
          
           <img
             id="img"
-            src={src}
+            src={photoURL}
             alt=""
-            value={src}
+            value={photoURL}
           />
-          <input
-          
-           type="text"
-           name="photoURL"
-           required
-           placeholder={photoURL}
-           value={photoURL}
-           onChange={(e) => setPhotoURL(e.target.value)}
-         />
-         
-
+        
           <SidebarItem
             x={undo}
             className={styles.sidebaritem}

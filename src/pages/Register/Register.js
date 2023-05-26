@@ -12,6 +12,10 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
 
+  const updateAvatar = (src) => {
+    setPhotoURL(src);
+  };
+
   const { createUser, error: authError, loading } = useAuthentication();
 
   const handleSubmit = async (e) => {
@@ -21,9 +25,9 @@ const Register = () => {
 
     const user = {
       displayName,
-      photoURL,
       email,
       password,
+      photoURL,
     };
 
     if (password !== confirmPassword) {
@@ -47,16 +51,15 @@ const Register = () => {
       <p>Crie seu usuário e compartilhe suas histórias!</p>
       <form onSubmit={handleSubmit}>
         <div className={styles.avatar}>
-          <Avatar onChange={(e) => setPhotoURL(e.target.value)} />
-          <input
-          
-          type="text"
-          name="photoURL"
-          required
-          placeholder={photoURL}
-          value={photoURL}
-          onChange={(e) => setPhotoURL(e.target.value)}
-        />          
+          <Avatar handlePhotoURL={updateAvatar}/>
+          <label>
+          </label>
+             <input
+              type="hidden"
+              name="photoURL"
+              value={photoURL}
+              onChange={(e) => setPhotoURL(e.target.value)}
+            />
         </div>
         <label>
           <span>Nome:</span>

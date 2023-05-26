@@ -1,4 +1,4 @@
-import { db } from "../firebase/config";
+
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -40,7 +40,7 @@ export const useAuthentication = () => {
 
       await updateProfile(user, {
         displayName: data.displayName,
-        
+        photoURL: data.photoURL,
       });
 
       setLoading(false);
@@ -72,27 +72,26 @@ export const useAuthentication = () => {
   };
 
   //login - sign in
-  const login = async(data) => {
+  const login = async (data) => {
     checkIfIsCancelled();
 
     setLoading(true);
-    setError(false)
+    setError(false);
 
     try {
-      await signInWithEmailAndPassword(auth,data.email,data.password)
-      setLoading(false)
-      
+      await signInWithEmailAndPassword(auth, data.email, data.password);
+      setLoading(false);
     } catch (error) {
       let systemErrorMessage;
       if (error.message.includes("user-not-found")) {
-        systemErrorMessage="Ususário não Cadastrado"
+        systemErrorMessage = "Ususário não Cadastrado";
       } else if (error.message.includes("wrong-password")) {
-        systemErrorMessage="Senha incorreta."
+        systemErrorMessage = "Senha incorreta.";
       } else {
         systemErrorMessage = "Ocorreu um erro, por favor tente mais tarde.";
       }
-      setError(systemErrorMessage)
-      setLoading(false)
+      setError(systemErrorMessage);
+      setLoading(false);
     }
   };
 

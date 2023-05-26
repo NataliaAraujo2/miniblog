@@ -7,6 +7,7 @@ import { useState } from "react";
 import { FaBars, FaLock, FaPen, FaUnlock } from "react-icons/fa";
 import Sidebar from "../Sidebar/Sidebar";
 import SidebarItem from "../SidebarItem/SidebarItem";
+import UserPhoto from "../UserPhoto/UserPhoto";
 import { NavLink } from "react-router-dom";
 import { useAuthentication } from "../../hooks/useAuthentication";
 
@@ -16,8 +17,7 @@ const Navbar = () => {
   const { logout } = useAuthentication();
   const [sidebar, setSidebar] = useState(false);
   const showSidebar = () => setSidebar(!sidebar);
-
-
+ 
 
   return (
     <div className={styles.navbar}>
@@ -33,13 +33,16 @@ const Navbar = () => {
             </NavLink>
           </div>
           <div className={styles.link_list}>
-
+            <li>
+            <UserPhoto className={styles.photo} />
+            </li>
             <li>
               <SidebarItem
                 x={logout}
                 way="/"
                 Icon={FaUnlock}
                 Text="Logout"
+                className={styles.siderbaritem}
               ></SidebarItem>
             </li>
           </div>

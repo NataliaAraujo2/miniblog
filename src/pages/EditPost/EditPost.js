@@ -68,6 +68,7 @@ const EditPost = () => {
     tagsArray,  
     uid: user.uid,
     createBy: user.displayName,
+    photoURL: user.photoURL,
   }
 
    updateDocument(id, data);
