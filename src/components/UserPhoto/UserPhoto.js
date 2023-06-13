@@ -7,14 +7,14 @@ const UserPhoto = () => {
 
   return (
     <div className={styles.photo}>
-      {user && user.photoURL === null ? (
+      {/* {user && user.photoURL === null ? (
         
         <FaUserSecret className={styles.photo} />
       ) : (
         <div>
           <img src={user.photoURL} alt="" className={styles.photo} />
         </div>
-      )}
+      )} */}
     </div>
   );
 };
